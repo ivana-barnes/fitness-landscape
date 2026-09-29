@@ -127,7 +127,7 @@ if(plot_type == "pop_out"){quartz(width = width, height = height)}
 if(plot_type == "plot_window"){quartz.options(width = width, height = height)}
 if(plot_type == "pdf"){pdf(width = width, height = height, file = file)}
 plot.new()
-par(mfrow = c(1, 2), oma = c(2,2,1,1))
+par(mfrow = c(1, 2), mar = c(4.5, 4.5, 2, 1.5), oma = c(0, 0, 0, 0))
   
   
 ##### LEFT PLOT #####

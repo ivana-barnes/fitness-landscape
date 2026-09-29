@@ -6,43 +6,44 @@ source("fitness_landscape.R")
 
 # Define UI for application
 ui <- fluidPage(
-
-    # Application title
-    titlePanel("Fitness Landscape"),
-
-    # Sidebar with inputs
-    sidebarLayout(
-        sidebarPanel(
-            # Sliders for relative fitness for each genotype
-            sliderInput("w11",
-                        "w11:",
-                        min = 0,
-                        max = 1,
-                        value = 1),
-            sliderInput("w12",
-                        "w12:",
-                        min = 0,
-                        max = 1,
-                        value = 0.5),
-            sliderInput("w22",
-                        "w22:",
-                        min = 0,
-                        max = 1,
-                        value = 1),
-            # Button for whether to treat as relative or absolute fitness
-            radioButtons("rel_fit",
-                         "Fitness:",
-                         choiceNames = c("Relative","Absolute"),
-                         choiceValues = c(TRUE,FALSE)),
-            width = 2
-            
-        ),
-
-        # Display the output plot
-        mainPanel(
-           plotOutput("myPlot")
-        )
+  # Application title
+  titlePanel("Fitness Landscape"),
+  
+  fluidRow(
+    # Left column: inputs (4 units wide out of 12)
+    column(
+      width = 3,
+      wellPanel(
+        # Sliders for relative fitness for each genotype
+        sliderInput("w11",
+                    "w11:",
+                    min = 0,
+                    max = 1,
+                    value = 1),
+        sliderInput("w12",
+                    "w12:",
+                    min = 0,
+                    max = 1,
+                    value = 0.5),
+        sliderInput("w22",
+                    "w22:",
+                    min = 0,
+                    max = 1,
+                    value = 1),
+        # Button for whether to treat as relative or absolute fitness
+        radioButtons("rel_fit",
+                     "Fitness:",
+                     choiceNames = c("Relative","Absolute"),
+                     choiceValues = c(TRUE,FALSE))
+      )
+    ),
+    
+    # Right column: plot display (8 units wide out of 12)
+    column(
+      width = 9,
+      plotOutput("myPlot", width = "100%", height = "70vh")
     )
+  )
 )
 
 # Define server logic required to create the output plot
@@ -50,6 +51,8 @@ server <- function(input, output) {
 
     output$myPlot <- renderPlot({
         
+      # Set aspect ratio
+      par(pty = "s")
       # See source code for fl_plot function
       fl_plot(w11 = as.numeric(input$w11), 
               w12 = as.numeric(input$w12), 
