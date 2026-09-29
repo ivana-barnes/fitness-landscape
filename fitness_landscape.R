@@ -127,7 +127,7 @@ if(plot_type == "pop_out"){quartz(width = width, height = height)}
 if(plot_type == "plot_window"){quartz.options(width = width, height = height)}
 if(plot_type == "pdf"){pdf(width = width, height = height, file = file)}
 plot.new()
-par(mfrow = c(1, 2), oma = c(2,2,1,1))
+par(mfrow = c(1, 2), mar = c(4.5, 4.5, 2, 1.5), oma = c(0, 0, 0, 0))
   
   
 ##### LEFT PLOT #####
@@ -477,7 +477,8 @@ points(x = p_hat, y = 0, col = col_p_hat, pch = 19, cex = .75)
 if(add_legend){
 
 legend(x = .65, y = y_limit, xjust = 0, yjust = 1, 
-       legend = c("stable","unstable"), 
+       title = "Equilibria:",
+       legend = c("Stable","Unstable"), 
        fill = c(color_stable,color_unstable),
        cex = .75, bty = "n")
 
