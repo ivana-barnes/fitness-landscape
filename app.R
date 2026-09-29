@@ -29,11 +29,6 @@ ui <- fluidPage(
                         min = 0,
                         max = 1,
                         value = 1),
-            # Button for whether to include the legend
-            radioButtons("add_legend",
-                         "Include Legend:",
-                         choiceNames = c("Yes","No"),
-                         choiceValues = c(TRUE,FALSE)),
             # Button for whether to treat as relative or absolute fitness
             radioButtons("rel_fit",
                          "Fitness:",
@@ -60,7 +55,7 @@ server <- function(input, output) {
               w12 = as.numeric(input$w12), 
               w22 = as.numeric(input$w22),
               plot_type = "plot_window",
-              add_legend = input$add_legend,
+              add_legend = TRUE,
               rel_fit = input$rel_fit)
     })
 }

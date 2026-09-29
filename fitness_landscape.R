@@ -477,6 +477,7 @@ points(x = p_hat, y = 0, col = col_p_hat, pch = 19, cex = .75)
 if(add_legend){
 
 legend(x = .65, y = y_limit, xjust = 0, yjust = 1, 
+       title = "Equilibria:",
        legend = c("stable","unstable"), 
        fill = c(color_stable,color_unstable),
        cex = .75, bty = "n")
