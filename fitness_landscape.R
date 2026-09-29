@@ -478,7 +478,7 @@ if(add_legend){
 
 legend(x = .65, y = y_limit, xjust = 0, yjust = 1, 
        title = "Equilibria:",
-       legend = c("stable","unstable"), 
+       legend = c("Stable","Unstable"), 
        fill = c(color_stable,color_unstable),
        cex = .75, bty = "n")
 
